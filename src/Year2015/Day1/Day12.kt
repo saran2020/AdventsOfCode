@@ -1,34 +1,27 @@
 package Year2015.Day1
 
-import java.io.FileReader
+import Solver
 
+class Day12(filePath: String) : Solver(filePath) {
 
-object Day12 {
-    val path = "C:\\Users\\its me\\IdeaProjects\\AdventsOfCode\\src\\Year2015\\Day1\\Day1.txt"
+    var steps = 0
+    var pos = 1
 
-    @JvmStatic
-    fun main(x: Array<String>) {
+    override fun forEachChar(index: Int, char: Char): Boolean {
 
-        var steps = 0
-        var pos = 1
+        if (char == '(') steps++
+        else steps--
 
-        val fileReader = FileReader(path)
-        var i: Int = fileReader.read()
-        while (i != -1) {
-            steps = calculateStep(steps, i.toChar())
-
-            if (steps == -1) break
-
-            i = fileReader.read()
-            pos++
+        // if
+        return if (steps == -1) {
+            pos = index
+            true
+        } else {
+            false
         }
-
-        print("First time entered basement at $pos")
-        fileReader.close()
     }
 
-    private fun calculateStep(steps: Int, i: Char): Int {
-        return if (i == '(') steps + 1
-        else steps - 1
+    override fun displayResult() {
+        print("First time entered basement at $pos")
     }
 }
