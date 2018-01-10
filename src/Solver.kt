@@ -1,16 +1,13 @@
-import java.util.*
-import jdk.nashorn.internal.runtime.ScriptingFunctions.readLine
-import java.io.FileReader
 import java.io.BufferedReader
 import java.io.File
+import java.io.FileReader
 
 
-abstract class Solver(filePath: String) {
+abstract class Solver(val filePath: String) {
 
     var lineIndex = 0
 
-
-    init {
+    fun solve() {
         val file = File(filePath)
 
         BufferedReader(FileReader(file)).use { br ->
