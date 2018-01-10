@@ -1,5 +1,4 @@
-import Year2015.Day1.Day11
-import Year2015.Day1.Day12
+import Year2015.Day2.Day22
 
 object MainClass {
 
@@ -7,7 +6,7 @@ object MainClass {
     fun main(x: Array<String>) {
 
         print("Executing..\n")
-        Day12("/Users/mac1/Development/Playground/JavaProject/AdventsOfCode/src/Year2015/Day1/Day1.txt")
+        Day22("/Users/mac1/Development/Playground/JavaProject/AdventsOfCode/src/Year2015/Day2/Day2.txt")
         print("\nFinish..")
     }
 }

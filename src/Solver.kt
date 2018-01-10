@@ -42,7 +42,6 @@ abstract class Solver(filePath: String) {
         return false
     }
 
-
     /**
      * If the function returns true it will stop the read operation
      */

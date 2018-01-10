@@ -1,38 +1,33 @@
 package Year2015.Day2
 
-import java.io.File
+import Solver
 
+class Day22(filePath: String) : Solver(filePath) {
 
-object Day22 {
+    var sum = 0L
 
-    val path = "C:\\Users\\its me\\IdeaProjects\\AdventsOfCode\\src\\Year2015\\Day2\\Day2.txt"
+    override fun forEachLine(index: Int, line: String): Boolean {
 
-    @JvmStatic
-    fun main(x: Array<String>) {
+        // in order l, w, h
+        val numbers = ShortArray(3)
+        line.split("x")
+                .forEachIndexed { i, num ->
+                    numbers[i] = num.toShort()
+                }
 
-        var sum = 0L
+        val perminter = arrayOf(numbers[0] + numbers[0] + numbers[1] + numbers[1],
+                numbers[1] + numbers[1] + numbers[2] + numbers[2],
+                numbers[2] + numbers[2] + numbers[0] + numbers[0])
 
-        val fileBufferReader = File(path).bufferedReader()
-        fileBufferReader.forEachLine { line ->
+        var multiply = 1
+        numbers.forEach { multiply *= it }
 
-            // in order l, w, h
-            val numbers = ShortArray(3)
-            line.split("x")
-                    .forEachIndexed { index, num ->
-                        numbers[index] = num.toShort()
-                    }
+        sum += multiply + perminter.min()!!
 
-            val perminter = arrayOf(numbers[0] + numbers[0] + numbers[1] + numbers[1],
-                    numbers[1] + numbers[1] + numbers[2] + numbers[2],
-                    numbers[2] + numbers[2] + numbers[0] + numbers[0])
+        return false
+    }
 
-            var multiply = 1
-            numbers.forEach { multiply *= it }
-
-            sum += multiply + perminter.min()!!
-        }
-
+    override fun displayResult() {
         print("Required ribion $sum")
-        fileBufferReader.close()
     }
 }
